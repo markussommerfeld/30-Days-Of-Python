@@ -35,7 +35,6 @@ is_married, is_true,is_light_on  = True, True, True #10 - 13 done
 
 #%%
 """
-
     Check the data type of all your variables using type() built-in function
     Using the len() built-in function, find the length of your first name
     Compare the length of your first name and your last name
