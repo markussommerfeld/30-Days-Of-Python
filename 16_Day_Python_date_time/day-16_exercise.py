@@ -18,3 +18,26 @@ Created on Fri Jul 12 15:40:16 2024
 """
 
 #1 done
+import datetime 
+
+now = datetime.datetime.now()
+print(now)
+
+#2 done
+t = now.strftime('%m/%d/%Y, %H:%M:%S')
+print(t)
+
+#3 done
+str_date = '5 December, 2019'
+date_object = datetime.datetime.strptime(str_date, "%d %B, %Y")
+
+#4 done
+t_newyear = datetime.datetime(year =2025, month = 1, day = 1, hour = 0, minute = 0, second = 0)
+till_newyear = t_newyear - now
+print(till_newyear)
+
+#5 done
+timestamp = now.timestamp()
+print(datetime.timedelta(days=0, hours=0, minutes=0, seconds=timestamp) )
+
+#6 done. is just thinking
