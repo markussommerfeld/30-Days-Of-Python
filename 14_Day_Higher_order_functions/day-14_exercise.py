@@ -83,6 +83,107 @@ Exercises: Level 2
 
 """
 
+#1 done
+countries_capitalized = map(lambda x: x.upper(), countries)
+print(list(countries_capitalized))
+
+#2 done
+numbers_squared = map(lambda x: x**2, numbers)
+print(list(numbers_squared))
+
+#3 done
+names_capitalized = map(lambda x: x.upper(), names)
+print(list(names_capitalized))
+
+#4 done
+countries_land = lambda x: True if 'land' in x  else False
+print(list(filter(countries_land,countries)))
+
+#5 done
+countries_6 = lambda x: True if len(x)==6 else False
+print(list(filter(countries_6,countries)))
+
+#6 done
+countries_6 = lambda x: True if len(x)>=6 else False
+print(list(filter(countries_6,countries)))
+
+#7 done
+countries_E = lambda x: True if x.startswith('E') else False
+print(list(filter(countries_E,countries)))
+
+#8 done
+def square(x):
+    return(x**2)
+
+def is_even(num):
+    if num%2 ==0:
+        return True
+    else:
+        return False
+
+num_squared = map(square, numbers)
+print(list(num_squared))
+num_squared_even = filter(is_even, map(square, numbers))
+print(list(num_squared_even))
+
+# numbers_squared_even = filter(lambda x: True if map(lambda x: x**2, numbers)%2==0 else False,numbers)
+# print(list(numbers_squared_even))
+
+#9 done
+import random
+list_input = countries + numbers
+random.shuffle(list_input)
+
+def get_string_lists (x):
+    if isinstance(x, str):
+        return True
+    else:
+        return False
+    
+list_of_strings = filter(get_string_lists,list_input)
+print(list(list_of_strings))
+
+#10 done
+def add_2_num(x,y):
+    return(x+y)
+
+reduce(add_2_num,numbers)
+
+#11 kind of done
+print(reduce(lambda x, y: y + ', ' + x, countries, ' are north European countrtries'))
+
+#12 done
+# read the countries variable
+runfile('C:/GitHub/30-Days-Of-Python/data/countries.py', wdir='C:/GitHub/30-Days-Of-Python/data')
+def categorize_countries(list_in,common_pattern):
+    list_out = []
+    for i in list_in:
+        if common_pattern in i:
+            list_out.append(i)
+    return(list_out)
+
+categorize_countries(countries,'stan') #'land', 'ia', 'island', 'stan'
+
+#13 done
+import string   
+
+def count_countries(list_in):
+    first_letter_list = [i[0] for i in list_in]
+    key_list = list(string.ascii_uppercase)
+    dict_out = {}
+    for i in key_list:
+        dict_out[i] = first_letter_list.count(i)
+    return(dict_out)
+
+count_countries(countries)
+
+#14 done
+def get_first_ten_countries(countries):
+    return(countries[:10])
+
+#15 done
+def get_last_ten_countries(countries):
+    return(countries[-10:])
 
 """
 Exercises: Level 3
@@ -92,3 +193,23 @@ Exercises: Level 3
         Sort out the ten most spoken languages by location.
         Sort out the ten most populated countries.
 """
+#%%
+runfile('C:/GitHub/30-Days-Of-Python/data/countries-data_variable.py', wdir='C:/GitHub/30-Days-Of-Python/data')
+country_data=np.array(country_data)
+#Sort by name, capital, population
+import numpy as np
+country_names = list(map(lambda x: x['name'], country_data))
+country_capital = list(map(lambda x: x['capital'], country_data))
+country_population = list(map(lambda x: x['population'], country_data))
+
+names_index = np.argsort(country_names)
+capital_index = np.argsort(country_capital)
+population_index = np.argsort(country_population)
+
+country_data[names_index]
+country_data[capital_index]
+country_data[population_index]
+
+#sort out top ten spoken languages
+# done it before, could do it again.
+
