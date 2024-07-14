@@ -97,7 +97,6 @@ sentence = '''%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is noth
 
 def clean_text(sentence):
     return(re.sub('[%@$&#]', '', sentence))
-cleaned_text =  clean_text(sentence)
 
 def most_frequent_words(text,n):
  
@@ -110,5 +109,7 @@ def most_frequent_words(text,n):
 
     return(all_words_count[:n])
 
+cleaned_text =  clean_text(sentence)
+print(cleaned_text)
 n = 3
 print(most_frequent_words(cleaned_text,n))
