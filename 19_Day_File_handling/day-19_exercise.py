@@ -125,8 +125,8 @@ for i in list_of_dirs:
 #7 done
 # check similarity between texts
 
-text_dir_1 = 'michelle_obama_speech.txt'
-text_dir_2 = 'melina_trump_speech.txt'
+text_dir_1 = '../data/michelle_obama_speech.txt'
+text_dir_2 = '../data/melina_trump_speech.txt'
 
 def clean_text(text):
     filter_str = r'[^A-Za-z0-9 \n]'
