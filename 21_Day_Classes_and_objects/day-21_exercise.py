@@ -38,19 +38,36 @@ class Statistics:
     def median(self):
         self.distribution.sort()
         if len(self.distribution)%2 ==0:
-           return (self.distribution[len(self.distribution)//2-1] + self.distribution[len(self.distribution)//2+1]) /2
+           return (self.distribution[len(self.distribution)//2-1] + self.distribution[len(self.distribution)//2]) /2
         else:
             return self.distribution[len(self.distribution)//2]
+        
+        #change to percentile(self,percentile_in=50)
         
     # mode Method
     def mode(self):
         return max(set(self.distribution), key=self.distribution.count)
         
+    def findYPoint(xa,xb,ya,yb,xc):
+        m = (ya - yb) / (xa - xb)
+        return (xc - xb) * m + yb
+
     # percentile Method
     def percentile(self,percentile_in=50):
-        self.distribution.sort()
-        idx = round(len(self.distribution)*percentile_in/100)
-        return self.distribution[idx]
+        # something doesn't work here!!
+        # self.distribution.sort()
+        # idx_1 = percentile_in * len(self.distribution) // 100 
+        # idx_2 = idx_1 + 1
+        # y1 = self.distribution[idx_1]
+        # y2 = self.distribution[idx_2]
+        # x1 = idx_1*100/len(self.distribution)
+        # x2 = idx_2*100/len(self.distribution)
+        # m = (y2 - y1) / (x2 - x1)
+        # b = y1 - m * x1
+        # return (percentile_in) * m + b
+        import numpy as np
+        return np.percentile(self.distribution, percentile_in)
+  
         
     # count Method
     def count(self):
@@ -62,15 +79,18 @@ class Statistics:
     
     # variance Method
     def var(self):
-        return 'WIP'
+        
+        return sum((self.distribution-self.mean())**2)/(len(self.distribution))
     
     # standard deviation Method
     def std(self):
-        return 'WIP'
+        import math
+        return math.sqrt(self.var())
     
     # frequency distribution Method
     def frequency(self):
-        return 'WIP'
+        # I don't understand why this is not sorted!!
+        return [(i, self.distribution.count(i)) for i in set(self.distribution)]
         
     
         
@@ -86,3 +106,36 @@ total_expense, account_info, add_income, add_expense and account_balance methods
 description. The same goes for expenses.
  
 """
+
+# could do it but it's getting late. 
+# Also more info missing !
+class PersonAccount:
+     # init method or constructor
+     def __init__(self,firstname, lastname, incomes, expenses, properties):
+         # self.test = list_in
+         self.distribution = list
+         self.firstname = firstname
+         self.lastname = lastname 
+         self.incomes = incomes
+         self.expenses = expenses
+         self.properties = properties
+         
+         def  total_income(self):
+             return 'WIP'
+         
+         def total_expense(self):
+             return 'WIP'
+
+         def account_info(self):
+             return 'WIP'
+
+         def add_income(self):
+             return 'WIP'
+
+         def add_expense(self):
+             return 'WIP'
+
+         def account_balance(self):
+             return 'WIP'
+
+         
