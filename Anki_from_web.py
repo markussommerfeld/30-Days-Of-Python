@@ -31,6 +31,19 @@ print(response.status_code)
 import requests
 from bs4 import BeautifulSoup
 
+'''
+TODO:
+        Make into function that takes JLPTN 1-5 as input
+        add a functionality that get number of Kanji: <h4>Kanji<span class="result_count"> — 367 found</span></h4>
+        add a functionality that increases page_counter while len(kanji_list)<number of Kanji
+        
+        new function
+        data scrap top 2-3 words for each Kanji from: https://jisho.org/search/*%E5%86%85* 
+        (maybe have to use encoder to change kanji to %numbers?!)
+        or get all common words with their jlptN level mentioned on page
+        make into CSV file that can be read by anki
+'''
+
 
 kanji_list = []
 
@@ -60,7 +73,8 @@ for page_counter in range(1,20):
             meanings = item.find('div', class_='meanings english sense').text.strip()
             if item.find('div', class_='kun readings'):
                 kunyomi = item.find('div', class_='kun readings').text.strip() 
-            onyomi = item.find('div', class_='on readings').text.strip()
+            if item.find('div', class_='on readings'):
+                onyomi = item.find('div', class_='on readings').text.strip()
     
             kanji_list.append({
                 'Kanji': kanji,
@@ -70,7 +84,6 @@ for page_counter in range(1,20):
             })
     
 # Print the extracted Kanji list
-for kanji in kanji_list:
-        print(f"Kanji: {kanji['Kanji']}, Onyomi: {kanji['Onyomi']}, Kunyomi: {kanji['Kunyomi']}, Meanings: {kanji['Meanings']}")
-else:
-    print(f"Failed to retrieve the page. Status code: {response.status_code}")
+print(str(len(kanji_list)) + " Kanjis extracted.")
+kanji = kanji_list[-1]
+print(f"Example:  Kanji: {kanji['Kanji']}, Onyomi: {kanji['Onyomi']}, Kunyomi: {kanji['Kunyomi']}, Meanings: {kanji['Meanings']}")
